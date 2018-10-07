@@ -1,0 +1,39 @@
+
+<div *ngIf="model">
+  <div>
+    {{ model.title }}
+  </div>
+  <div>
+    {{  model.description }}
+  </div>
+  <div>
+    <div>
+      Parms
+    </div>
+    <div>
+      <dx-button
+    text="Run"
+    (onClick)="getReportData()">
+</dx-button>
+    </div>
+    <dx-data-grid id="gridContainer"
+      [dataSource]=data
+      [allowColumnResizing]="true"
+      [allowColumnReordering]="true"
+      [showBorders]="true"
+      >
+
+      <dxo-selection mode="single"></dxo-selection>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"></dxo-pager>
+
+      <dxi-column *ngFor="let column of model.columns" 
+        [visible]="column.display" 
+        [dataField]="column.name" 
+        [caption]="column.title ? column.title : column.name"
+        [format]="column.format"></dxi-column>
+
+  </dx-data-grid>
+</div>
+</div>
