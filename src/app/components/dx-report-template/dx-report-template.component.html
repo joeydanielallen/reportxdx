@@ -1,5 +1,11 @@
-
+<div>
+    Choose a Report
+    <ol>
+      <li *ngFor="let template of reportTemplates"><a (click)="selectReport(template)" href="javascript:void(0)">{{ template.title }}</a> </li>
+    </ol>
+  </div>
 <div *ngIf="model">
+
   <div>
     {{ model.title }}
   </div>
